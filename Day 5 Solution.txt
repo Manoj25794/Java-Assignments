@@ -1,0 +1,333 @@
+ANS 1________________________
+import java.util.*;
+
+class Food{
+        Food(){
+         System.out.println("Inside Food constructor");
+    }
+    void taste(){
+       System.out.println("Food is love");
+    }
+}
+class Indian extends Food{
+        Indian(){
+         System.out.println("Inside Indian constructor");
+    }
+    void taste(){
+       System.out.println("Indian Food is very spicy");
+    }
+}
+class Biryani extends Indian{
+	//super(); //To Call Parent Class Constructor(No Need)
+        Biryani(){
+         System.out.println("Inside Biryani constructor");
+    }
+    void taste(){
+       System.out.println("Biryani is best indian food");
+    }
+}
+class Four
+{  
+  public static void main(String args[])
+  {  
+    Biryani bir = new Biryani();
+      bir.taste();
+  }
+}
+/*
+Inside Food constructor
+Inside Indian constructor
+Inside Biryani constructor
+Biryani is best indian food
+*/
+
+ANS 2___________________
+
+import java.util.*;
+
+class Vehicle{
+    void start(){
+        System.out.println("Vehicle started");
+    }
+}
+class FourWheeler extends Vehicle{
+    void start(){
+        System.out.println("FourWheeler started");
+    }
+}
+
+public class Demo
+{  
+  public static void main(String args[])
+  {  
+    Vehicle v = new FourWheeler(); //Overriding start() of Vehicle
+    v.start();          //Late binding
+  }
+}
+
+ANS 3_____________________
+
+import java.util.*;
+
+class Food{
+    
+    Food(){
+         System.out.println("Inside Food constructor");
+    }
+    void taste(){
+       System.out.println("Food is love");
+    }
+}
+class Indian extends Food{
+    Indian(){
+       System.out.println("Inside Indian constructor");
+    }
+    void taste(){
+       System.out.println("Indian Food is very spicy");
+    }
+}
+class Italian extends Food{
+    Italian(){
+        System.out.println("Inside Italian constructor");
+    }
+    void taste(){
+       System.out.println("Italian food is not very spicy");
+    }
+}
+class Six
+{  
+  public static void main(String args[])
+  {  
+    Italian it = new Italian();
+      it.taste();
+  }
+}
+/*
+Output:
+Inside Food constructor
+Inside Italian constructor
+Italian food is not very spicy
+*/
+
+ANS 4__________________________
+
+
+import java.util.*;
+
+class Top1{
+    void disp1(){
+        System.out.println("inside Top1");
+    }
+}
+class Bottom1 extends Top1{
+    void disp1(){
+        System.out.println("inside Bottom1");
+    }
+}
+class Bottom2 extends Top1{
+    void disp1(){
+        System.out.println("inside Bottom2");
+    }
+}
+class Bottom3 extends Top1{
+    void disp1(){
+        System.out.println("inside Bottom3");
+    }
+}
+
+public class Four
+{  
+  public static void main(String args[])
+  {  
+    Top1 t3 = new Bottom3();
+      t3.disp1();       //Dynamic Polymorphism(Late Binding)
+  }
+}
+
+ANS 5_________________________
+
+
+import java.util.*;
+
+abstract class Shape{
+    abstract void draw();
+}
+class Triangle extends Shape{
+    void draw(){
+        System.out.println("Shape is Triangle");
+    }
+}
+class Polygon extends Shape{
+    void draw(){
+        System.out.println("Shape is Polygon");
+    }
+}
+class Circle extends Shape{
+    void draw(){
+        System.out.println("Shape is Circle");
+    }
+}
+
+public class Five
+{  
+    static void perform(Shape ref){
+        ref.draw();
+    }
+    
+  public static void main(String args[])
+  {  
+      Shape s[] = new Shape[3];
+      
+    s[0] = new Triangle();
+    s[1] = new Polygon();
+    s[2] = new Circle();
+      
+      for(int i=0;i<3;i++){
+          perform(s[i]);
+      }
+  }
+}
+
+ANS 6_____________________________________________
+
+
+import java.util.*;
+
+interface A{
+    void disp1();
+}
+interface B extends A{
+    void disp2();
+}
+class C implements B{
+    public void disp(){
+        System.out.println("disp");        
+    }
+    public void disp1(){
+        System.out.println("disp1");        
+    }
+    public void disp2(){
+        System.out.println("disp2");        
+    }
+}
+
+class Six
+{  
+  public static void main(String args[])
+  {  
+    C c = new C();
+      c.disp();
+      c.disp1();
+      c.disp2();
+  }
+}
+
+
+ANS 7 ____________________________________________
+
+
+import java.util.*;
+
+class Parent1{
+    int num;
+    void disp(){
+        System.out.println("class A disp");
+    }
+}
+interface Parent2{
+    void disp1();
+    void disp2();
+}
+class Child extends Parent1 implements Parent2{
+    void disp(){
+        System.out.println("disp");        
+    }
+    public void disp1(){
+        System.out.println("disp1");        
+    }
+    public void disp2(){
+        System.out.println("disp2");        
+    }
+}
+
+class Seven
+{  
+  public static void main(String args[])
+  {  
+    Child c = new Child();
+      System.out.println(c.num);  
+      c.disp();
+      c.disp1();
+      c.disp2();
+  }
+}
+
+ANS 8________________________________________
+
+
+import java.util.*;
+
+class base1{
+    base1(int k){
+        System.out.println("base constructor");  
+    }
+}
+class sub1 extends base1{
+    sub1(){
+        super(k);
+        System.out.println("sub1 no-arg constructor");  
+    }
+    sub1(int k){
+        super(k);
+        System.out.println("sub1 one-param constructor");  
+    }
+    sub1(int k,int p){
+        super(k);
+        System.out.println("sub1 two-param constructor");  
+    }
+}
+class Eight
+{  
+  public static void main(String args[])
+  {  
+    sub1 s = new sub1(3);
+  }
+}
+
+ANS 9_______________________________________
+
+import java.util.*;
+
+interface Game{
+    void play();
+}
+class Cricket implements Game{
+    public void play(){
+        System.out.println("Playing Cricket");
+    }
+}
+class FootBall implements Game{
+    public void play(){
+        System.out.println("Playing FootBall");
+    }
+}
+class Tennis implements Game{
+    public void play(){
+        System.out.println("Playing Tennis");
+    }
+}
+
+class Demo
+{  
+  public static void perform(Game ref){
+            ref.play();
+  }
+  public static void main(String args[])
+  {  
+    perform(new Cricket());
+    perform(new FootBall());
+    perform(new Tennis());
+
+  }
+}
+

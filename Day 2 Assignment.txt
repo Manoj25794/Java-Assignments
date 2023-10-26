@@ -1,0 +1,332 @@
+//Que1)
+
+package Day_2;
+
+class Shape
+{
+	private int width,height;
+
+	public int getWidth() {
+		return width;
+	}
+
+	public void setWidth(int width) {
+		this.width = width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+	
+}
+
+public class Demo {
+	public static void main(String []args)
+	{
+		Shape s1=new Shape();
+		s1.setWidth(15);
+		s1.setHeight(10);
+		System.out.println("width=  "+s1.getWidth());
+		System.out.println("height=  "+s1.getHeight());
+	}
+
+}
+
+
+//Que2)
+
+package Day_2;
+
+/*2) Define a class "MyClass" and make sure clients can instantiate it , 
+a) without any argument
+b) with one int argument
+c) with two int arguments
+
+	here you need to define 3 constructors inside "MyClass".
+		default constructor, one parameterized and two parameterized constructor*/
+
+class Myclass
+{
+	private int num1,num2;
+	
+	Myclass()
+	{
+		System.out.println("Inside Default Constructor");
+	}
+	Myclass(int num1)
+	{
+		System.out.println("Inside one Param Constructor");
+		this.num1=num1;
+	}
+	Myclass(int num1,int num2)
+	{
+		System.out.println("Inside two Param Constructor");
+		this.num1=num1;
+		this.num2=num2;
+	}
+	public void disp()
+	{
+		System.out.println(num1+"     "+num2);
+	}
+	}
+
+public class Demo
+{
+	public static void main(String []args)
+	{
+		Myclass m1=new Myclass();
+		m1.disp();
+		Myclass m2=new Myclass(100);
+		m2.disp();
+		Myclass m3=new Myclass(200,300);
+		m3.disp();
+	}
+}
+
+//Que3)
+
+package Day_2;
+
+class Emp
+{
+	private static int cnt=100;
+	
+	public static int getCnt()
+	{
+		return cnt;
+	}
+}
+public class Demo
+{
+	public static void main(String []args)
+	{
+		System.out.println(Emp.getCnt());
+	}
+}
+
+//Que4)
+
+package Day_2;
+
+class DemoOb
+{
+	private int num;
+
+	public int getNum() {
+		return num;
+	}
+
+	public void setNum(int num) {
+		this.num = num;
+	}
+	
+}
+public class Demo
+{
+	public static void main(String[]args)
+	{
+		DemoOb ob1=new DemoOb();
+		ob1.setNum(100);
+		System.out.println(ob1.getNum());//100
+		DemoOb ob2=ob1;
+		System.out.println(ob2.getNum());//100
+		ob1=new DemoOb();
+		ob1.setNum(200);
+		System.out.println(ob1.getNum());//200
+	}
+}
+
+//Que5)
+
+package Day_2;
+
+class A
+{
+	private int num;
+	private static int snum;
+	
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
+	public static int getSnum() {
+		return snum;
+	}
+	public static void setSnum(int snum) {
+		A.snum = snum;
+	}	
+}
+
+class B
+{
+	private int num;
+	private static int snum=200;
+	
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
+	public static int getSnum() {
+		return snum;
+	}
+	public static void setSnum(int snum) {
+		B.snum = snum;
+	}	
+}
+
+class C
+{
+	private int num;
+	private static int snum;
+	
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
+	public static int getSnum() {
+		return snum;
+	}
+	public static void setSnum(int snum) {
+		C.snum = snum;
+	}
+	
+}
+	
+
+public class Demo
+{
+	public static void main(String[]args)
+	{
+		A a=new A();
+		a.setNum(100);
+		System.out.println(a.getNum());
+		
+		System.out.println(A.getSnum());
+		
+		B b=new B();
+		b.setNum(100);
+		System.out.println(b.getNum());
+		
+		System.out.println(B.getSnum());
+		
+		C c=new C();
+		c.setNum(500);
+		System.out.println(c.getNum());
+		
+		System.out.println(C.getSnum());
+	}
+}
+
+//Day6)
+
+package Day_2;
+
+class A
+{
+	static
+	{
+		System.out.println("Inside claas A static block");
+	}
+	private int num;
+	private static int snum;
+	
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
+	public static int getSnum() {
+		return snum;
+	}
+	public static void setSnum(int snum) {
+		A.snum = snum;
+	}
+}
+class B
+{
+	
+	private int num;
+	private static int snum=200;
+	
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
+	public static int getSnum() {
+		return snum;
+	}
+	public static void setSnum(int snum) {
+		B.snum = snum;
+	}
+
+	static
+	{
+		System.out.println("Inside claas B static block");
+	}
+}
+class C
+{
+	static
+	{
+		System.out.println("Inside claas C static block");
+	}
+	
+	private int num;
+	private static int snum;
+	
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
+	public static int getSnum() {
+		return snum;
+	}
+	public static void setSnum(int snum) {
+		C.snum = snum;
+	}
+}
+	
+
+public class Demo
+{
+	
+	public static void main(String[]args)
+	{
+	A a=new A();
+		a.setNum(100);
+		System.out.println(a.getNum());
+		
+		System.out.println(A.getSnum());
+		
+		B b=new B();
+		b.setNum(100);
+		System.out.println(b.getNum());
+		
+		System.out.println(B.getSnum());
+		
+		C c=new C();
+		c.setNum(500);
+		System.out.println(c.getNum());
+		
+		System.out.println(C.getSnum());
+	}
+	static
+	{
+		System.out.println("Inside Demo class");
+	}
+}	

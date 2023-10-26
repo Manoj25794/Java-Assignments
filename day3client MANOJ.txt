@@ -1,0 +1,44 @@
+/**
+ * 
+ */
+package pack2;
+
+/**
+ * @author MANOJ
+ *
+ */
+public class Myclass {
+	private int num;
+
+	/**
+	 * @return the num
+	 */
+	public int getNum() {
+		return num;
+	}
+
+	/**
+	 * @param num the num to set
+	 */
+	public void setNum(int num) {
+		this.num = num;
+	}
+	
+
+}
+
+
+
+package client1;
+import pack2.Myclass; 
+public class clientapp {
+
+	public static void main(String[] args) {
+		
+		Myclass m1 = new Myclass();
+		
+		// TODO Auto-generated method stub
+
+	}
+
+}

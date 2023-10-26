@@ -1,0 +1,373 @@
+
+//Que1)display a table of a particular number
+
+package Day_1;
+import java.util.Scanner;
+
+public class Que1 {
+
+	public static void main(String[] args) {
+			Scanner sc = new Scanner(System.in);
+			
+			System.out.println("Enter any number");
+			int num;
+			num= sc.nextInt();
+			
+			
+			for(int i=num;i<=num*10;i=i+num)
+			{
+				
+				System.out.println(i);
+	}
+
+	}
+}
+
+__________________________________________________________________________________________________________
+
+//Que2)
+
+//declare two numbers and one operator as a character. e.g. '+'
+//using switch... case check which operator is declared and accordingly perform the action.
+
+package Day_1;
+
+import java.util.Scanner;
+public class Que_2 {
+
+	public static void main(String[] args) {
+	Scanner sc=new Scanner(System.in);
+		int num1=10;
+		int num2=20;
+		int res;
+		
+		System.out.println("Please enter operator");
+		char ch;
+		ch=sc.next().charAt(0);
+		
+		switch(ch)
+		{
+		case '+': res=num1+num2;
+		System.out.println(res);
+				break;
+		default: System.out.println("invalid");
+		}
+	}
+
+}
+__________________________________________________________________________________________________________
+
+//Que3)
+
+//Display numbers  1 to 10 using loop
+
+package Day_1;
+
+public class que_3 {
+
+	public static void main(String[] args) {
+		int i=1;
+		do
+		{
+			System.out.println(i);
+			i++;
+		}while(i<=10);
+		
+
+}
+}
+
+_________________________________________________________________________________________________________
+
+//Que4)
+
+//4)	Display numbers from 3 to 30 except number 24  using loop.
+
+package Day_1;
+
+public class Que_4 {
+
+	public static void main(String[] args) {
+		for(int i=3;i<=30;i++)
+		{
+			if(i==24)
+			{
+				continue;
+			}
+			System.out.println(i);
+		}
+
+	}
+
+}
+
+______________________________________________________________________________________________________________
+
+
+//Que5)
+
+package Day_1;
+import java.util.Scanner;
+
+public class Que5 {
+
+	public static void main(String[] args) {
+	
+			Scanner sc= new Scanner(System.in);
+			System.out.print("Enter Marks ");
+			int mrk= sc.nextInt(); 
+			if(mrk>=35) {
+				System.out.println("pass");
+			
+			 if(mrk>=35 && mrk<=60)
+				System.out.println("Second Class");
+			
+				else if(mrk>61 && mrk<=74)
+				System.out.println("first Class");
+			
+			else if (mrk>=75)
+				System.out.println("Distinction Class");
+			}
+			else 
+				System.out.println("fail");
+			}
+		  }
+	
+
+_______________________________________________________________________________________________________________
+
+//Que6)
+
+//display all prime numbers between 3 to 30
+
+package Day_1;
+
+public class Que_6 {
+
+	public static void main(String[] args) {
+		
+		int flag=1;
+		
+		for(int i=3;i<=30;i=i+2)
+		{
+			for(int j=2;j<=i/2;j++)
+			{
+				if(i%j==0)
+				{
+					flag=0;
+					break;
+				}
+				else
+					flag=1;
+				
+			}
+			if (flag==1)
+				System.out.println(i);
+			
+		}
+	}
+}
+
+_____________________________________________________________________________________________________________
+
+//Que7)
+
+public class Que7 {
+
+	public static void main(String[] args) {
+		
+		char ch='A';
+		for(int i=1;i<=3;i++)
+		{
+			for(char j='a';j<='c';j++)
+			{
+				System.out.print(ch+"  ");
+				System.out.print(j);
+				System.out.println();
+			}
+			System.out.println();
+			ch++;
+		}
+	}
+}
+
+_____________________________________________________________________________________________________________
+
+//Que8a)
+
+package Day_1;
+
+public class Que8_a {
+
+	public static void main(String[] args) {
+		
+			for(int i=1;i<=5;i++)
+			{
+				for(int s=i;s<5;s++)
+				System.out.print(" ");
+				
+				for(int j=1;j<=i;j++)
+				{
+					System.out.print("* ");
+				}
+				System.out.println();
+			}
+	}
+
+}
+
+____________________________________________________________________________________________________________
+
+//Que8b)
+
+package Day_1;
+
+public class Que_8b {
+
+	public static void main(String[] args) {
+		
+		for(int i=4;i>=1;i--)
+		{
+			for(int s=i;s<4;s++)
+				System.out.print(" ");
+			
+			for(int j=i;j>=1;j--)
+				System.out.print("* ");
+			System.out.println();
+		}
+	
+	}
+
+}
+
+___________________________________________________________________________________________________________
+
+
+//Que8C)
+
+//package Day_1;
+
+//public class Que8_c {
+
+	public static void main(String[] args) {
+		int k=0;
+		for(int i=1;i<=7;i++)
+		{
+			
+			if(i<=4) 
+			{
+			for(int s=i;s<4;s++)
+				System.out.print(" ");
+			}
+			else
+			{
+				for(int t=i;t>4;t--)
+					System.out.print(" ");
+			}
+			if(i<=4)
+			{
+				for(int j=1;j<=i;j++)
+					System.out.print("* ");
+			
+			System.out.println();
+			}
+			else
+			{
+				k++;
+				for(int j=i;j>2*k;j--)
+				{
+					System.out.print("* ");
+				}
+					
+				System.out.println();
+			}
+		}
+	}
+}
+
+______________________________________________________________________________________________________________
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*1) accept two numbers and add them.
+2) accept two numbers and subtract them.
+3) accept two numbers and multiply them.
+4) accept two numbers and devide them.
+5) accept two numbers and check whether first number is greater or second number is greater or they are equal.
+6) accept a number and check whether it is divisible by 3 or not.*/
+
+
+package Day_1;
+import java.util.Scanner;
+
+public class OperatorAssign {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int num1,num2;
+		System.out.println("Enter two numbers");
+		num1=sc.nextInt();
+		num2=sc.nextInt();
+		int addition=add(num1,num2);
+		System.out.println("Addition is  "+addition);
+		int substraction=sub(num1,num2);
+		System.out.println("substraction is  "+substraction);
+		int multiplication=mul(num1,num2);
+		System.out.println("multiplication is  "+multiplication);
+		double division=div(num1,num2);
+		System.out.println("division is  "+division);
+		if(num1>num2)
+			System.out.println(num1+"  is greater");
+		else if(num1<num2)
+			System.out.println(num2+"  is greater");
+		else
+			System.out.println("num1 and num2 are EQUAL");
+		int num3;
+		System.out.println("Enter a number to chk divisibility of 3");
+		num3=sc.nextInt();
+		if(num3%3==0)
+			System.out.println(num3+"  is Divisible by 3");
+		else
+			System.out.println(num3+"  is NOT Divisible by 3");
+	}
+	public static int add(int x,int y)
+	{
+		return x+y;
+	}
+	public static int sub(int x,int y)
+	{
+		return x-y;
+	}
+	public static int mul(int x,int y)
+	{
+		return x*y;
+	}
+	public static double div(int x,int y)
+	{
+		return (double)x/y;
+	}
+
+}
