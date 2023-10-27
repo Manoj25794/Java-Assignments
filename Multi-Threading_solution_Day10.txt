@@ -1,5 +1,5 @@
-Name : VEDANT S DHADANGE
-PNR  : 099
+
+
 
 1) create a multi-threaded application by using  "extends Thread " method.create 2 threads. they should display characters from A to J.
 
