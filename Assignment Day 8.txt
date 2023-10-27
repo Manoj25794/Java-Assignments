@@ -1,0 +1,334 @@
+//Que1)
+
+class MyArithException extends Exception
+{
+	MyArithException(String s)
+	{
+		super(s);
+	}
+}
+
+//____________
+
+public class Calculator
+{
+	int caldouble(int k) throws MyArithException
+	{
+		if(k==0)
+	{
+		throw new MyArithException("Zero not allowed");
+	}
+	
+		else if(k<0)
+	{
+		throw new MyArithException("Negative not allowed");
+	}
+		return 2*k;
+	}
+}
+
+//____________
+
+import java.util.Scanner;
+
+public class Demo
+{
+	public static void main(String[]args)
+	{
+		Calculator c = new Calculator();
+
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Enter a number");
+
+		int num = sc.nextInt();
+
+		int result=0;
+[
+		try
+		{
+			result = c.caldouble(num);
+			System.out.println(result);
+		}
+		
+		catch(MyArithException mess)
+		{
+		System.out.println(mess);
+		}
+	}
+}
+
+//______________________________________________________________________________________________
+
+//Que2)
+
+/**
+ * 
+ */
+package devpack;
+
+/**
+ * @author JISHAN MULANI
+ *
+ */
+public class NumberNotDivisibleBySevenException extends Exception
+{
+	public NumberNotDivisibleBySevenException(String ss)
+	{
+		super(ss);
+	}
+}
+
+//_________________
+
+package clientpack;
+
+import devpack.NumberNotDivisibleBySevenException;
+
+public class MyMath 
+{
+	public void disp(int num) throws NumberNotDivisibleBySevenException
+	{
+		if(num%7!=0)
+		{
+			throw new NumberNotDivisibleBySevenException("Number Not divisible By Seven");
+		}
+	}
+}
+
+//__________________
+
+package clientpack;
+import java.util.Scanner;
+
+import devpack.NumberNotDivisibleBySevenException;
+
+
+public class Demo {
+
+	public static void main(String[] args) 
+	{
+		MyMath m = new MyMath();
+		
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Enter a Number");
+		
+		try
+		{
+			int num = sc.nextInt();
+			m.disp(num);
+			System.out.println("Nuber is Divisible by Seven");
+		}
+		
+		catch(NumberNotDivisibleBySevenException a)
+		{
+			System.out.println(a);
+		}
+	}
+
+}
+
+//____________________________________________________________________________________________________
+
+//Que3)
+
+package devpack;
+import java.util.Scanner;
+class MyException extends Exception
+{
+	MyException(String msg){
+		super(msg);
+	}
+}
+public class Demo 
+{
+	public void show3() throws MyException
+	{
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Entered Any Number");
+		int num = sc.nextInt();
+		
+		if(num>10)
+		{
+			throw new MyException("Number is Greater than 10");
+		}
+		else{
+		System.out.println("Entered Number is Lesser Than 10");
+		}
+	}
+	public void show2() throws MyException
+	{
+		show3();
+	}
+	
+	public void show1()
+	{
+		
+		try 
+		{
+			show2();
+			
+		}
+		catch (MyException e) 
+		{
+			
+			e.printStackTrace();
+		}
+	}
+	
+	public static void main(String[] args) 
+	{
+		Demo d =new Demo();
+		
+		d.show1();
+
+	}
+
+}
+
+//___________________________________________________________________________________________________
+
+//Que4)
+
+package devpack;
+
+
+/**
+ * @author HINA MULANI
+ *
+ */
+public class InvalidLengthException extends Exception
+{
+	public InvalidLengthException(String ss)
+	{
+		super(ss);
+	}
+}
+
+//_____________
+
+package clientpack;
+
+import devpack.InvalidLengthException;
+
+public class Authenticator 
+{
+	public Authenticator(String ss) throws InvalidLengthException
+	{
+		if(ss.length()<5  || ss.length()>9)
+		{
+			throw new InvalidLengthException("InvalidLengthException");
+		}
+	}
+	
+	public void done()
+	{
+		System.out.println("successful authentication");
+	}
+}
+
+//______________
+
+package clientpack;
+import devpack.InvalidLengthException;
+public class Demo {
+
+	public static void main(String[] args) 
+	{
+		
+		try
+		{
+			Authenticator a = new Authenticator("Jishan@123");
+			a.done();
+		}
+		
+		catch(InvalidLengthException ae)
+		{
+			System.out.println(ae);
+		}
+
+	}
+}
+
+//__________________________________________________________________________________________________
+
+//Que5)
+
+package devpack;
+
+
+/**
+ * @author JISHAN MULANI
+ *
+ */
+public class ResourceNotAllocatedException extends Exception
+{
+	public  ResourceNotAllocatedException(String ss)
+	{
+		super(ss);
+	}
+}
+
+//____________
+
+package devpack;
+
+
+/**
+ * @author JISHAN MULANI
+ *
+ */
+
+public class MyResource implements AutoCloseable
+{
+	public MyResource(int capacity) throws ResourceNotAllocatedException
+	{
+		if(capacity>100)
+		{
+			throw new ResourceNotAllocatedException("not sufficient space");
+		}
+	}
+	
+	public void disp()
+	    {
+	    	System.out.println("successful");
+	    }
+	 
+	 @Override
+		public void close()  
+	 {
+			System.out.println("resource is closed");
+			
+	 }
+}
+
+//_______________
+
+package clientpack;
+import java.util.Scanner;
+import devpack.*;
+
+public class Demo {
+
+	public static void main(String[] args) 
+	{
+		Scanner sc=new Scanner(System.in);
+		try
+		{
+			System.out.println("Enter Capacity");
+			int capacity=sc.nextInt();
+			
+			MyResource m = new MyResource(capacity);
+			
+			 m.disp();
+		}
+		catch(ResourceNotAllocatedException ae)
+		{
+			System.out.println(ae);
+		}
+
+	}
+
+}
+
+//_________________________________________________________________________________________________

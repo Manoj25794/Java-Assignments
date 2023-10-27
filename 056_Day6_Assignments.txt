@@ -1,0 +1,273 @@
+1)
+//on developer side
+interface Shape
+{
+	void draw();
+}
+class Triangle implements Shape
+{
+	public void draw()
+	{
+		System.out.println("draw Triangle ....");
+	}
+}
+class Rectangle implements Shape
+{
+	public void draw()
+	{
+		System.out.println("draw Rectangle ....");
+	}
+}
+class Circle implements Shape
+{
+	public void draw()
+	{
+		System.out.println("draw Circle ....");
+	}
+}
+
+//on client side 
+public class Demo
+{
+	public static void main(String args[])
+	{
+		Shape shape[] = new Shape[3];
+		shape[0] = new Triangle();
+		shape[1] = new Rectangle();
+		shape[2] = new Circle();
+		for(int i=0; i<shape.length; i++)
+		{
+			shape[i].draw();
+		}
+	}
+}
+
+2)
+interface MouseHandler
+{
+	void mouseClicked();
+	void mousePressed();
+	void mouseReleased();
+}
+interface WindowHandler
+{
+	void windowClosing();
+	void windowClosed();
+}
+class WindowGUIApp implements MouseHandler,WindowHandler
+{
+	public void mouseClicked()
+	{
+		System.out.println("Windows mouse is Clicked ....");
+	}
+	public void mousePressed()
+	{
+		System.out.println("Windows mouse is Pressed ....");
+	}
+	public void mouseReleased()
+	{
+		System.out.println("Windows mouse is Released ....");
+	}
+	public void windowClosing()
+	{
+		System.out.println("Windows  is Closing ....");
+	}
+	public void windowClosed()
+	{
+		System.out.println("Windows  is Closed ....");
+	}
+}
+
+public class Demo
+{
+	public static void main(String args[])
+	{
+		WindowGUIApp windowGUIApp = new WindowGUIApp();
+		windowGUIApp.mouseClicked();
+		windowGUIApp.mousePressed();
+		windowGUIApp.mouseReleased();
+		windowGUIApp.windowClosing();
+		windowGUIApp.windowClosed();
+	}
+}
+
+
+3)
+//on developer side
+
+interface PersistenceMechanism
+{
+	void writeData(String ref);
+	String readData();
+} 
+
+//on client side 
+class FileSystem implements PersistenceMechanism
+{
+	public void writeData(String ref)
+	{
+		System.out.println("write data inside FileSystem :"+ref);
+	}
+	public String readData()
+	{
+		System.out.println("read data from FileSystem");
+		return "File System Writing data";
+	}
+}
+class DatabaseSystem implements PersistenceMechanism
+{
+	public void writeData(String ref)
+	{
+		System.out.println("write data inside DatabaseSystem "+ref);
+	}
+	public String readData()
+	{
+		System.out.println("read data from DatabaseSystems");
+		return "Database System Writing data";
+	}
+}
+class BigdataSystem implements PersistenceMechanism
+{
+	public void writeData(String ref)
+	{
+		System.out.println("write data inside BigdataSystem"+ref);
+	}
+	public String readData()
+	{
+		System.out.println("read data from BigdataSystem ");
+		return "Bigdata System Writing data";
+	}
+}
+public class Demo
+{
+	public static void main(String args[])
+	{
+		PersistenceMechanism persistenceMechanism[] = new PersistenceMechanism[3];
+		persistenceMechanism[0] = new FileSystem();
+		persistenceMechanism[1] = new DatabaseSystem();
+		persistenceMechanism[2] = new BigdataSystem();
+
+		for(int i=0; i<persistenceMechanism.length; i++)
+		{
+			if(persistenceMechanism[i] instanceof BigdataSystem)
+			{
+				persistenceMechanism[i].writeData(persistenceMechanism[i].readData());
+			}
+		}
+	}
+}
+
+
+
+4)
+//on developer side 
+import java.util.Scanner;
+interface Vehicle
+{
+	void changeGear(int a);
+	void speedUp(int a);
+	void applyBrakes(int a);
+}
+
+// on the client side 
+class FourWheeler implements Vehicle
+{
+	public void changeGear(int a)
+	{
+		System.out.println("change gear of Fourwheeler to "+a);
+	}
+	public void speedUp(int a)
+	{
+		System.out.println("speed up the Fourwheeler upto "+a);
+	}
+	public void applyBrakes(int a)
+	{
+		System.out.println("apply Brakes to Fourwheeler on "+a);
+	}
+}
+class TwoWheeler implements Vehicle
+{
+	public void changeGear(int a)
+	{
+		System.out.println("change gear of Twowheeler to "+a);
+	}
+	public void speedUp(int a)
+	{
+		System.out.println("speed up the Twowheeler upto "+a);
+	}
+	public void applyBrakes(int a)
+	{
+		System.out.println("apply Brakes to Twowheeler on "+a);
+	}
+}
+public class Demo
+{	
+	public  static void perform(Vehicle vehicle)
+	{
+		if(vehicle instanceof FourWheeler)
+		{	
+			vehicle.changeGear(5);
+			vehicle.speedUp(60);
+			vehicle.applyBrakes(80);
+		}
+		else
+		{
+			vehicle.changeGear(4);
+			vehicle.speedUp(40);
+			vehicle.applyBrakes(50);
+		}
+	}
+	public static void main(String args[])
+	{
+		perform(new FourWheeler());
+		perform(new TwoWheeler());
+	}
+}
+5)inside project 
+	package weaponpack
+
+public class Weapon
+{
+	public void attack()
+	{
+	
+	}
+}
+public class sword extends Weapon
+{
+	public void attack()
+	{
+		System.out.println("Sword Slashing ");
+	}
+}
+public class Bomb extends Weapon
+{
+	public void attack()
+	{
+		System.out.println("Bomb blasting ");
+	}
+}
+public class Gun extends Weapon
+{
+	public void attack()
+	{
+		System.out.println("Gun firing ")
+	}
+	public void fillBullets()
+	{
+		System.out.println("Filling Bullets ");
+	}
+}
+public class Soldier
+{
+	public void fight(Weapon weapon)
+	{
+		weapon.attack();
+		if(weapon instanceof Gun)
+		{
+			Gun gun = (gun)weapon;
+			gun.fillBullets();
+		}
+	}
+}
+	

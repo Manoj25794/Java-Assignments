@@ -1,0 +1,166 @@
+1) define a functional interface "First" with an abstract method "void disp1()" , default method "void disp2()" and a static method "void disp3()"
+
+inside main function using lambda expression invoke "disp1()" and "disp2()" methods.
+also invoke "disp3()" method inside main.
+
+package Test1;
+
+public interface First {
+	void disp1();
+	
+	default void disp2() {
+		System.out.println("In disp2");
+	}
+	static void disp3() {
+		System.out.println("In disp3");
+	}
+}
+
+package Test1;
+
+public class MyClass {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		First f1=()->{System.out.println("in disp1");};
+		f1.disp1();
+		f1.disp2();
+		First.disp3();
+		
+	}
+
+}
+
+Output:
+in disp1
+In disp2
+In disp3
+
+
+2) define a functional interface "Second" with an abstract method "void disp4()".
+
+define a class Demo with main function.
+inside main function create two implementations of "Second" using lambda expression and display their names.
+
+package Test1;
+
+public interface Second {
+	void disp4();
+}
+package Test1;
+
+public class Demo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Second s1=()->{System.out.println("in disp1 of s1");};
+		s1.disp4();
+		System.out.println(s1.getClass().getName());
+		
+		Second s2=()->{System.out.println("In disp2 of s2");};	
+		s2.disp4();
+		System.out.println(s2.getClass().getName());		
+		}
+	}
+
+
+Output:
+in disp1 of s1
+Test1.Demo$$Lambda$1/0x000001f6a7000bf8
+In disp2 of s2
+Test1.Demo$$Lambda$2/0x000001f6a7001000
+
+
+3) define a functional interface "MyInterface" with an abstract method "void fun()"
+define a class Demo with two functions "static void perform" and main.
+from main function pass lambda expression, collect it in "perform" method and invoke "fun()" function.
+
+package Test1;
+public interface MyInterface {
+	void fun();
+}
+
+package Test1;
+
+public class Demo {
+static void perform(MyInterface ref) {
+	ref.fun();
+}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		perform(()->{System.out.println("In Fun of MyInterface");});
+		}
+	}
+
+
+4) define a functional interface "Calculator" with an abstract method "int multiply(int a,int b)"
+define a class "CalcDemo" with main method.
+inside main using lambda create an implementation of "Calculator" , invoke "multiply()" method and display its result.
+package Test1;
+
+public interface Calculator {
+	int multiply(int a,int b);
+}
+
+package Test1;
+
+public class CalcDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Calculator ref=(a,b)->{return (a*b);};
+		System.out.println(ref.multiply(2, 5));
+		}
+	}
+Output:
+10
+
+
+5) define a class "Display" with "void disp" method. inside this method display values from 1 to 10.
+
+create an implementation of "Runnable" using lambda expression which will invoke "disp()" method of "Display" class.
+
+create 2 threads and pass above created "Runnable" implementation to these threads.
+make sure while one thread is executing other thread will not interfere.
+package Test1;
+
+public class Display {
+	synchronized public void disp() {
+		for(int i=1;i<=10;i++) {
+			System.out.println(i+" "+Thread.currentThread().getName());
+		}
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Display d=new Display();
+		Thread t1=new Thread(()->{d.disp();},"First Thread t1");
+		Runnable ref=()->{d.disp();};
+		Thread t2=new Thread(ref,"Second Thread t2");
+		t1.start();
+		t2.start();
+		}
+}
+
+Output:
+1 First Thread t1
+2 First Thread t1
+3 First Thread t1
+4 First Thread t1
+5 First Thread t1
+6 First Thread t1
+7 First Thread t1
+8 First Thread t1
+9 First Thread t1
+10 First Thread t1
+1 Second Thread t2
+2 Second Thread t2
+3 Second Thread t2
+4 Second Thread t2
+5 Second Thread t2
+6 Second Thread t2
+7 Second Thread t2
+8 Second Thread t2
+9 Second Thread t2
+10 Second Thread t2
+
+

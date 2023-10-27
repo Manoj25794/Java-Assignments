@@ -1,0 +1,197 @@
+Name : VEDANT S DHADANGE
+PNR  : 099
+
+1) create a multi-threaded application by using  "extends Thread " method.create 2 threads. they should display characters from A to J.
+
+Solution :
+
+Th1.java
+
+package pro1;
+
+public class Th1 extends Thread {
+	public void run() {
+		for (char i = 'A'; i <= 'J'; i++) {
+			System.out.print(i + " ");
+		}
+	}
+}
+
+
+
+Demo.java
+
+package pro1;
+
+public class Demo {
+	public static void main(String[] args) {
+		Th1 t = new Th1();
+		t.start();
+	}
+}
+
+
+
+
+
+2) above program  using "implements Runnable" method.
+
+Th1.java
+
+package pro1;
+
+public class Th1 implements Runnable {
+	public void run() {
+		for (char i = 'A'; i <= 'J'; i++) {
+			System.out.print(i + " ");
+		}
+	}
+}
+
+
+Demo.java
+
+package pro1;
+
+public class Demo {
+	public static void main(String[] args) {
+		Th1 th = new Th1();
+		Thread t = new Thread(th);
+		t.start();
+	}
+}
+
+3) create 3 threads in such a way that while one thread is executing, 2 threads cannot interfere. they should display output "Exec  0" to "Exec 5".
+
+
+Solution:
+
+Th1.java
+
+package pro1;
+
+public class Th1 implements Runnable {
+	public synchronized void run() {
+		for (int i = 1; i < 6; i++) {
+			System.out.println("Exec " + i);
+		}
+		System.out.println();
+	}
+}
+
+
+Demo.java
+
+package pro1;
+
+public class Demo {
+	public static void main(String[] args) {
+		Th1 th = new Th1();
+		Thread t = new Thread(th);
+		Thread t1 = new Thread(th);
+		Thread t2= new Thread(th);
+		t.start();
+		t1.start();
+		t2.start();
+	}
+}
+
+
+4)create 2 threads. Write a program which displays number 1 to 10 using class lock. 
+[hint:- use "implements Runnable" and synchronized block]
+
+Solution:
+
+Th1.java
+
+package pro1;
+
+public class Th1 implements Runnable {
+	public void run() {
+		disp();
+	}
+	synchronized static void disp() {
+		for (int i = 1; i < 11; i++) {
+			System.out.println("Exec " + i);
+		}
+		System.out.println();
+	}
+}
+
+
+Demo.java
+
+package pro1;
+
+public class Demo {
+	public static void main(String[] args) {
+		Th1 th = new Th1();
+		Th1 th1 = new Th1();
+		Thread t = new Thread(th);
+		Thread t1 = new Thread(th1);
+		t.start();
+		t1.start();
+	}
+}
+
+
+
+
+5) create 2 threads
+	one thread will display 1 to 50
+	second thread will display 50 to 1
+both the threads should start simultaneously.
+
+(use implements method)
+
+Solution:
+
+Th1.java
+
+package pro1;
+
+public class Th1 implements Runnable {
+	public void run() {
+		if(Thread.currentThread().getName().equalsIgnoreCase("assending"))
+			assending();
+		else
+			descending();
+	}
+	 void assending() {
+		for (int i = 1; i < 51; i++) {
+			System.out.println(Thread.currentThread().getName() +"\t"+i);
+		}
+	}
+
+	 void descending() {
+		for (int i = 50; i > 0; i--) {
+			System.out.println(Thread.currentThread().getName() +"\t"+i);
+		}
+	}
+}
+
+
+Demo.java
+
+package pro1;
+
+public class Demo {
+	public static void main(String[] args) {
+		Th1 th = new Th1();
+		Thread t = new Thread(th);
+		Thread t1 = new Thread(th);
+		t.setName("Assending");
+		t1.setName("Descending");
+		t.start();
+		t1.start();
+	}
+}
+
+
+
+
+
+
+
+
+
